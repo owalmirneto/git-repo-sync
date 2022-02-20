@@ -6,22 +6,27 @@ branding:
   color: gray-dark
 
 inputs:
-  target-url:
-    description: 'Target Repo URL'
+  target-domain:
+    description: 'Target repo domain'
     required: true
   target-username:
-    description: 'Target Repo Username'
+    description: 'Target repo Username'
+    required: true
+  target-repository:
+    description: 'Target repo name'
     required: true
   target-token:
-    description: 'Target Token'
+    description: 'Target access token'
     required: true
+
 runs:
   using: "composite"
   steps:
     - run: ${{ github.action_path }}/entrypoint.sh
       shell: bash
       env:
-        INPUT_TARGET_URL: ${{ inputs.target-url }}
-        INPUT_TARGET_USERNAME: ${{ inputs.target-username }}
-        INPUT_TARGET_TOKEN: ${{ inputs.target-token }}
-        GITHUB_EVENT_REF: ${{ github.event.ref }}
+        TARGET_DOMAIN: ${{ inputs.target-domain }}
+        TARGET_USERNAME: ${{ inputs.target-username }}
+        TARGET_REPOSITORY: ${{ inputs.target-repository }}
+        TARGET_TOKEN: ${{ inputs.target-token }}
+        GITHUB_CURRENT_BRANCH: ${{ github.event.ref }}
