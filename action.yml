@@ -9,6 +9,7 @@ inputs:
   target-domain:
     description: 'Target repo domain'
     required: true
+    default: 'gitlab.com'
   target-username:
     description: 'Target repo Username'
     required: true
