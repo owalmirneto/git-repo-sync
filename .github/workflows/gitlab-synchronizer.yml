@@ -1,4 +1,4 @@
-name: GitLab Synchronization
+name: GitLab Synchronizer
 
 on: [push, delete]
 
@@ -10,9 +10,9 @@ jobs:
     - uses: actions/checkout@v2
       with:
         fetch-depth: 0
-    - uses: owalmirneto/git-repo-sync@main
+    - uses: owalmirneto/gitlab-sync@main
       with:
         target-domain: gitlab.com
         target-username: owalmirneto
-        target-repository: git-repo-sync
+        target-repository: gitlab-sync
         target-token: ${{ secrets.GITLAB_ACCESS_TOKEN }}
